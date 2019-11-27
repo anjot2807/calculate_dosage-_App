@@ -1,0 +1,207 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,700,300,500,100);
+@import "../styles/colors.scss";
+
+
+
+body { font-family: 'Roboto', sans-serif; }
+
+
+
+.mainContainer{
+  border: black solid 2px;
+  height: auto;
+  width: 450px;
+  align-items: center;
+  justify-content: center;
+  background-color: $colorLight;
+  background-image: url("");
+
+  h1{
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-around;
+    color: $text4;
+    text-shadow: #253238;
+  }
+}
+.pils{
+  background-image: url("../img/tabletki3.jpg");
+  height: 100px;
+}
+
+.chooseSubstance{
+  margin-top: 0;
+  padding: 10px 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  p{
+    font-size: 20px;
+    color: $text4;
+  }
+  select{
+    font-size: 18px;
+    color: $alertColor;
+    width: 200px;
+    height: 50px;
+    box-shadow: 5px 5px 5px  rgba(0, 0, 0, 0.4);
+  }
+
+}
+.kids{
+  background-image: url("../img/childrens-dance-clipart-2.jpg");
+  background-position: center;
+  background-size: contain;
+  //background-repeat: no-repeat;
+  height: 100px;
+  width: 100%;
+}
+.dosages{
+  padding-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  p{
+    font-size: 16px;
+    color: $text4;
+  }
+  input{
+    font-size: 18px;
+    color: $alertColor;
+    width: 300px;
+    height: 35px;
+    box-shadow: $shadow2;
+    margin: 5px;
+  }
+}
+.dosagesResult{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  h3{
+    margin: 8px;
+  }
+}
+.moreInfoContainer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  p{
+    text-align: center;
+    font-style: italic;
+    color: $accent;
+  }
+
+}
+.sideEffectsContainer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.sideEffectsDesc{
+ padding: 0;
+ text-align: center;
+  color: $alertText;
+  background-color: lightpink;
+  box-shadow: 5px 5px 5px  rgba(0, 0, 0, 0.4);
+
+}
+
+.button1 {
+  position: relative;
+  min-width: 88px;
+  width: 150px;
+  margin: 6px auto;
+  border-radius: $elementBorderRadius;
+  color: white;
+  background-color: $accent;
+  box-shadow: $shadow1;
+  text-transform: uppercase;
+  font-weight: 700;
+  transition: all .2s ease-in-out;
+  height: 36px;
+  padding: 0 26px;
+  border: none;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  line-height: 36px;
+
+  &:hover { background-color: darken($accent, 20%)}
+}
+
+.button2{
+  position: relative;
+  min-width: 88px;
+  width: auto;
+  margin: 6px auto;
+  font-size: 13px;
+  border-radius: $elementBorderRadius;
+  color: white;
+  background-color: $alertColor;
+  box-shadow: $shadow1;
+  text-transform: uppercase;
+  font-weight: 500;
+  transition: all .2s ease-in-out;
+  height: 36px;
+  padding: 0 26px;
+  border: none;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  line-height: 36px;
+
+  &:hover { background-color: darken($text1, 1%)}
+}
+
+.alert{
+  text-align: center;
+  height: 250px;
+  width: 450px;
+  border: solid 3px $alertColor;
+  position: absolute;
+  top:500px;
+  background-color: lightpink;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.6);
+  p{
+    color: $alertText;
+    font-weight: 700;
+    font-size: 30px;
+    padding: 30px;
+  }
+  .sideEffectsAspirinDesc{
+    text-align: center;
+    margin-top: 30px;
+    font-size: 17px;
+    padding-top: 35px;
+    height: 140px;
+    width: 80%;
+    color: $alertText;
+    background-color: lightpink;
+    border: solid 3px $alertColor;
+    box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.6);
+    position: absolute;
+    left: 40px;
+    top: 140px;
+  }
+  .buttonAlert{
+    position: absolute;
+    left: 130px;
+    top: 145px;
+    font-size: 13px;
+    border-radius: $elementBorderRadius;
+    color: white;
+    background-color: $alertColor;
+    box-shadow: $shadow1;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: all .2s ease-in-out;
+    height: 36px;
+  }
+}
+
