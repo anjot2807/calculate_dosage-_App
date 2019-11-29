@@ -7,15 +7,24 @@ import drugData from "../data/drugData";
         this.state = {
             sideEffectsAspirinChildren: false,
             sideEffectAspirinDesc: '',
+            showAlert: true,
         }
     }
 
-     handleChangeAlert = e => {
+     handleShowAlert = e => {
          this.setState({
              sideEffectsAspirinChildren: true,
              sideEffectAspirinDesc: drugData[4].sideEffectsAspirinChildren,
          })
      };
+
+     hideInfo= e => {
+         this.setState({
+             sideEffectsAspirinChildren: false,
+             sideEffectAspirinDesc: drugData[4].sideEffectsAspirinChildren,
+         })
+     };
+
 
      aspirinInfo = e => {
          if (this.state.sideEffectsAspirinChildren) {
@@ -32,9 +41,11 @@ import drugData from "../data/drugData";
         return (
             <div className='alert'>
                 <p> Nie podawaj aspiryny poniżej 16 roku życia !</p>
-                <button className='buttonAlert' onClick={this.handleChangeAlert}>Dowiedz się dlaczego</button>
+                <button className='buttonAlert' onClick={this.handleShowAlert}>Dowiedz się dlaczego</button>
+                <button className='buttonHideAlert' onClick={this.props.hideAlert}>x</button>
                 {this.state.sideEffectsAspirinChildren && <div className="sideEffectsAspirinDesc">
-                <div>{this.state.sideEffectAspirinDesc}</div> </div>}
+                <div>{this.state.sideEffectAspirinDesc}
+                <button className='buttonHideInfo' onClick={this.hideInfo}>Ukryj</button></div> </div>}
             </div>
         );
     }

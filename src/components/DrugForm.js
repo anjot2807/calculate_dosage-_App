@@ -12,7 +12,7 @@ class DrugForm extends Component {
             resultSingleDosage: 0,
             resultDailyDosage: 0,
             placeholder1: "wpisz masę dziecka w kg",
-            placeholder2: "wpisz wiek dziecka w miesiącach",
+            placeholder2: "wpisz wiek dziecka w latach",
             showAlert: false,
             description: drugData[0].description,
             sideEffects: false,
@@ -26,7 +26,7 @@ class DrugForm extends Component {
             resultSingleDosage: 0,
             resultDailyDosage: 0,
             placeholder1: "wpisz masę dziecka w kg",
-            placeholder2: "wpisz wiek dziecka w miesiącach",
+            placeholder2: "wpisz wiek dziecka w latach",
             showAlert: false,
             description: drugData[0].description,
             sideEffects: false,
@@ -80,7 +80,7 @@ class DrugForm extends Component {
                 finalResultSingle = ((this.state.inputValue * val.singleDosageAdult) / 70).toFixed(1);
             } else if (val.name === this.state.selectedValue && !!this.state.inputValue2) {
                 console.log('tutaj');
-                finalResultSingle = ((this.state.inputValue2 * val.singleDosageAdult) / 150).toFixed(1);
+                finalResultSingle = ((this.state.inputValue2 * val.singleDosageAdult) / (12+this.state.inputValue2)).toFixed(1);
             }
             if (this.state.selectedValue === 'Kwas acetylosalicylowy - aspiryna') {
                 console.log("alert się wyświetla");
@@ -99,7 +99,7 @@ class DrugForm extends Component {
             if (val.name === this.state.selectedValue && !!this.state.inputValue) {
                 finalResultDaily = ((this.state.inputValue * val.dailyDosageAdult) / 70).toFixed(1);
             } else if (val.name === this.state.selectedValue && !!this.state.inputValue2) {
-                finalResultDaily = ((this.state.inputValue2 * val.dailyDosageAdult) / 150).toFixed(1);
+                finalResultDaily = ((this.state.inputValue2 * val.dailyDosageAdult) / (12+this.state.inputValue2)).toFixed(1);
             }
         });
 
@@ -107,6 +107,12 @@ class DrugForm extends Component {
             resultSingleDosage: finalResultSingle,
             resultDailyDosage: finalResultDaily
         });
+    };
+
+    hideAlert = () => {
+        this.setState({
+            showAlert: false,
+        })
     };
 
     render() {
@@ -126,10 +132,11 @@ class DrugForm extends Component {
                     <div className='dosages'>
                         <div className="kids"/>
                         <p>Oblicz dawki jakie możesz podać dziecku</p>
-                        <input value={this.state.inputValue} onChange={this.handleInput}
+                        <p>Dla noworodków:</p>
+                        <input type='number' value={this.state.inputValue} onChange={this.handleInput}
                                placeholder={this.state.placeholder1}/>
-                        <span> lub </span>
-                        <input value={this.state.inputValue2} onChange={this.handleInput2}
+                        <span> lub dla dzieci w wieku 2-12 lat </span>
+                        <input type='number' value={this.state.inputValue2} onChange={this.handleInput2}
                                placeholder={this.state.placeholder2}/>
                         <div className="btn1">
                             <button className='button1' onClick={this.makeCalculation}>Oblicz</button>
@@ -138,7 +145,7 @@ class DrugForm extends Component {
                             <h2> Ile wynosi dawkowanie?</h2>
                             <h3>Dawka jednorazowa dla dziecka: {this.state.resultSingleDosage} mg </h3>
                             <h3>Dawka dobowa dla dziecka: {this.state.resultDailyDosage} mg </h3>
-                            {this.state.showAlert && <Alert />}
+                            {this.state.showAlert && <Alert hideAlert={this.hideAlert} /> }
                         </div>
                     </div>
                     <div className='moreInfoContainer'>
